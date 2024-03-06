@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8">
+      <title>WebVR - Aframe - Etnaplanetarium_VR </title>
+      <meta name="description" content="WebVR - Aframe - VR_Site">
+      <meta name="author" content="Maestro - VR Designer">
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+      <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+      <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+      <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>      
+      <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+      
+      <script>
+         AFRAME.registerComponent('hotspots',{
+           init:function(){
+               this.el.addEventListener('reloadspots',function(evt){
+               
+               //get the entire current spot group and scale it to 0
+               var currspotgroup=document.getElementById(evt.detail.currspots);
+               currspotgroup.setAttribute("scale","0 0 0");
+               
+               //get the entire new spot group and scale it to 1
+               var newspotgroup=document.getElementById(evt.detail.newspots);
+               newspotgroup.setAttribute("scale","1 1 1");
+             });
+           }
+         });
+         AFRAME.registerComponent('spot',{
+           schema:{
+             linkto:{type:"string",default:""},
+             spotgroup:{type:"string",default:""}
+           },
+           init:function(){
+             
+             //add image source of hotspot icon
+                       //make the icon look at the camera all the time
+             this.el.setAttribute("look-at","#cam");
+             
+             var data=this.data;
+             
+             this.el.addEventListener('click',function(){
+               //set the skybox source to the new image as per the spothttps://neocities.org/site_files/text_editor/autovr.html#
+               var sky=document.getElementById("skybox");
+               sky.setAttribute("src",data.linkto);
+               
+               var spotcomp=document.getElementById("spots");
+               var currspots=this.parentElement.getAttribute("id");
+               //create event for spots component to change the spots data
+               spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+             });
+           }
+         });
+      </script>
+   <body>
+            
+            <a-scene >
+         <a-assets>
+            <img id="point1" alt="home screen" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/superheroes%20pano.jpeg?v=1708004172346">
+            <img id="point2" alt="galassia background" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Milk%20way.jpg?v=1664627277331">      
+            <img id="point3" alt="background dinosauri" src="https://cdn.glitch.me/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2FDinosaur.png?v=1638724890444"> 
+            <img id="point4" alt="miti background" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Mitos.png?v=1668451306962"> 
+            <img id="point5" alt="stelle background" src="https://cdn.glitch.com/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2FSky.png?v=1630839080375"> 
+            <img id="point6" alt="pianeta marte background" src="https://cdn.glitch.me/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2FArcheo.jpg?v=1638795623671"> 
+            <img id="point7" alt="piante bg" src="https://cdn.glitch.me/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2FMakearth.png?v=1639306866206">
+            <img id="point8" alt="piante2 bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Mercury-Land.jpg?v=1641934620342">
+            <img id="point9" alt="marte bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Mars-land.png?v=1664305527406">        
+            <audio id="point10" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Home%20Vr%20Femaleshort.wav?v=1642875241136" autoplay></audio>
+            <img id="point11" alt="tritolnland" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Tritonland.jpg?v=1664125771567">
+            <img id="point12" alt="jupiter moons" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Jupiter%20&%20Moons.jpg?v=1664134618188">
+            <img id="point13" alt="saturn bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Saturn.jpg?v=1653158786311">
+            <img id="point14" alt="earth bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Earth.jpg?v=1664124539691">
+            <img id="point15" alt="venus bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Venus-land.png?v=1664123712047">
+            <img id="point16" alt="urano bg" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Flash-Logo.png?v=1708443838602">
+            <a-sound 
+               src="point10" 
+               autoplay="true"></a-sound>
+            <img id="hotspot" alt="mars planet" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/mars-planet.png?v=1641935114642">
+            <img id="hotspot1" alt="Solar sistem link" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Home%20Planet.png?v=1664293705087">
+            <img id="hotspot3" alt="curiosity alpha" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Curiosity%20Alpha.png?v=1664294551822">
+            <img id="hotspot4" alt="mercurio bb" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/steel%20simbol%20Superman.png?v=1708431810849"> 
+            <img id="hotspot5" alt="2k earth daymap" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/1-spiderman-logo-lisa-covington-transparent.png?v=1708448692440"> 
+            <img id="hotspot6" alt="marte 2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/captain-america-logo.png?v=1708447397829"> 
+            <img id="hotspot7" alt="jupiter 2k" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Logo%20iron%20man.png?v=1708447615637"> 
+            <img id="hotspot8" alt="saturn 2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/logo%20thor.PNG?v=1708449279810">
+            <img id="hotspot8a" alt="rings 2" src="https://etnaplanetarium.neocities.org/rings.png">
+            <img id="hotspot9" alt="uranovert" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/wonder%20woman-logo.png?v=1708448874082">
+            <img id="hotspot9a" alt="uranoring" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Uranoring.png?v=1664657768473">
+            <img id="hotspot10" alt="nettuno 2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Flash-Logo.png?v=1708445714224">
+            <img id="hotspot11" alt="venere2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Batman%20alpha%20.png?v=1708446698347">
+            <img id="hotspot2" alt="fvricon" src="https://cdn.glitch.com/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2Fvr-icon.png?v=1630840367777">
+         </a-assets>
+                     <a-entity id="cam" camera position="0 1.6 0" look-controls>
+               <a-entity cursor="fuse:true;fuseTimeout:4000"
+                  geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+                  position="0 0 -1.8"
+                  material="shader:flat;color:#ff0000"
+                  animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+               </a-entity>
+            </a-entity>
+         <a-entity id="spots" hotspots>
+            Home
+            <a-entity id="group-point1">
+               Solar Sistem
+               <a-image spot="linkto:#point8;spotgroup:group-point8" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true" position="4.3 3 -4" scale="1 1 1" src="#hotspot4"></a-image>
+               Mercury
+               <a-image spot="linkto:#point9;spotgroup:group-point9" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true" position="0.07 3 6" scale="1 1 1" src="#hotspot6"></a-image>
+               Mars
+               <a-image spot="linkto:#point11;spotgroup:group-point11" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true"  position="0.031 3 -5.9" scale="2 2 2" src="#hotspot10"></a-image>
+               Neptune
+               <a-image spot="linkto:#point12;spotgroup:group-point12" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true" position="-4.25 3 4" scale="1 1 1" src="#hotspot7"></a-image>
+               jupter
+               <a-image spot="linkto:#point13;spotgroup:group-point13" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true" position="-6 3 0.32" scale="1 1 1 " src="#hotspot8"></a-image>
+               Saturn
+               <a-image spot="linkto:#point14;spotgroup:group-point14"  geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur:18000; easing: linear; loop: true" position="3.81 3 4.4" scale="1 1 1" src="#hotspot5"></a-image>
+               Earth
+               <a-image spot="linkto:#point15;spotgroup:group-point15"  geometry="primitive:plane" animation="property: rotation; to: 0 -360 0; dur: 18000; easing: linear; loop: true" position="6 3 -0.009" scale="1 1 1" src="#hotspot11" ></a-image>
+               Venus
+               <a-image spot="linkto:#point16;spotgroup:group-point16" geometry="primitive:plane" animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true" position="-4.35 3 -3.96" scale="1 1 1" src="#hotspot9" ></a-image>
+               Uran 
+               
+              <a-image link="href:https://etnaplanetarium.neocities.org/" spot=linkto:#point1;spotgroup:group-point1"  position="3.5 0.4 -4" src="#hotspot2"></a-image>
+               
+               <a-image position="-6 3 0.32" scale="4.5 4.5 4.5" rotation="110 90 0" src="#hotspot8a"></a-image>
+               ringSaturn
+               <a-image position="-4.35 3 -3.96" scale="4 4 4" rotation="10 120 0" src="#hotspot9a"></a-image>
+               uranosring
+               <a-image spot="linkto:#point16;spotgroup:group-point16" position="-4.25 2.2 -3.14" scale="1.8 1.8 1.8" src="#hotspot"></a-image>
+            </a-entity>
+            </a-entity>                         
+                          
+            <a-entity id="group-point8" scale="0 0 0">
+               Mercury Land
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="3.5 0.4 -4" src="#hotspot1"></a-image>
+            </a-entity>
+            <a-entity id="group-point9" scale="0 0 0">
+               Mars Land
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="1.42 2.34 -5.51" src="#hotspot1"></a-image>
+               <a-image spot="linkto:#point1;spotgroup:group-point1" animation="property: position; to: -4.44 1 -10; dur: 9000; easing: linear; loop:false" position="-1.44 1 -10" scale="10 6 0" src="#hotspot3"></a-image>
+            </a-entity>
+            <a-entity id="group-point11" scale="0 0 0">
+               Triton Land
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="6.032 3.495 -0.905" src="#hotspot1"></a-image>
+            </a-entity>
+            <a-entity id="group-point12" scale="0 0 0">
+               Jupter
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="2.570 2.429 -6.230" src="#hotspot1"></a-image>
+            </a-entity>
+            <a-entity id="group-point13" scale="0 0 0">
+               Saturn
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="3.5 0.4 -4" src="#hotspot1"></a-image>
+            </a-entity>
+            <a-entity id="group-point14" scale="0 0 0">
+               Earth Land
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="-0.83 2.34 -5.51" src="#hotspot1"></a-image>
+            </a-entity>
+            <a-entity id="group-point15" scale="0 0 0">
+               Venus Land
+               <a-image  material="shader:gif;alphaTest:0.5;src:url(https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Venus%20land%206.gif?v=1669039037333);" gif=""  geometry="primitive:sphere" position="0 0 0" scale="10 10 10" src="#hotspot13"></a-image>
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="1.42 2.34 -5.51" src="#hotspot1" ></a-image>
+            </a-entity>
+            <a-entity id="group-point16" scale="0 0 0">
+               Urano
+               <a-image spot="linkto:#point1;spotgroup:group-point1" position="3.5 0.4 -4" src="#hotspot1"></a-image>
+            </a-entity>
+            
+              
+  
+  
+             <a-asset-item id="hamster-animated-gltf" src="https://cdn.rawgit.com/michaelnebeling/src/master/hamster_walk/scene.gltf"></a-asset-item>
+ <a-entity gltf-model="#hamster-animated-gltf" position="-6 0 -10" scale="0.01 0.01 0.01" animation-mixer></a-entity>
+ 
+ 
+            
+         
+         <a-sky id="skybox" src="#point1"></a-sky>
+      </a-scene>
+   </body>
+</html>
