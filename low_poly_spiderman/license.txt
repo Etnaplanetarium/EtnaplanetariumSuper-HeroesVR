@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low poly spiderman
+* source:	https://sketchfab.com/3d-models/low-poly-spiderman-5f880f0aff31442295bf91212a6af892
+* author:	Captain Capsule (https://sketchfab.com/CaptainCapsule)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low poly spiderman" (https://sketchfab.com/3d-models/low-poly-spiderman-5f880f0aff31442295bf91212a6af892) by Captain Capsule (https://sketchfab.com/CaptainCapsule) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
