@@ -1,0 +1,28 @@
+ <a-entity id="cam" camera position="0 1.6 0" look-controls>
+               <a-entity cursor="fuse:true;fuseTimeout:4000"
+               
+                id="spiderman"
+          src="#"
+           id="superman"
+          src="#"
+          
+                  geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+                  position="0 0 -1.8"
+                  material="shader:flat;color:#ff0000"
+                  animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+               </a-entity>
+            </a-entity>
+         <a-entity id="spots" hotspots>
+         
+         
+         <a-gltf-model position="0 0 -3" scale="" src="#spiderman" animation-mixer="" gltf-model="#"></a-gltf-model>
+               
+         <a-gltf-model position="3.30215 0 -2.17177" scale="100 100 100" src="#superman" animation-mixer="" gltf-model="#"></a-gltf-model>
+
+
+
+
+
+
+https://sketchfab.com/ak2yny/models
+               
