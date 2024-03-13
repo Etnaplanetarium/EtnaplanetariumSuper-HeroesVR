@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Flash (Barry Allen) DCUO
+* source:	https://sketchfab.com/3d-models/the-flash-barry-allen-dcuo-cdac94b371eb42129a043db7c27e004f
+* author:	mikomagallona (https://sketchfab.com/mikomagallona)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Flash (Barry Allen) DCUO" (https://sketchfab.com/3d-models/the-flash-barry-allen-dcuo-cdac94b371eb42129a043db7c27e004f) by mikomagallona (https://sketchfab.com/mikomagallona) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
