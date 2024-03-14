@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en-us">
    <head>
       <meta charset="utf-8">
@@ -91,20 +90,19 @@
             <img id="hotspot10" alt="nettuno 2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/1-spiderman-logo-lisa-covington-transparent.png?v=1708448692440">
             <img id="hotspot11" alt="venere2" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/Batman%20alpha%20.png?v=1708446698347">
             <img id="hotspot2" alt="fvricon" src="https://cdn.glitch.com/5cf41dcd-b4ad-458b-a16c-edefd9ebee18%2Fvr-icon.png?v=1630840367777">
-             <a-gltf-model id="spiderman-gltf" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/10_thor_mua.glb?v=1710405301900">
          </a-assets>
         
                   <a-entity id="cam" camera position="0 1.6 0" look-controls>
                <a-entity cursor="fuse:true;fuseTimeout:4000"
                                                 
-           
+           <a-asset-item id="spiderman-gltf" src="https://cdn.glitch.global/5cf41dcd-b4ad-458b-a16c-edefd9ebee18/10_thor_mua.glb?v=1710405301900"></a-asset-item>
            
                   geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
                   position="0 0 -1.8"
                   material="shader:flat;color:#ff0000"
                   animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
                   
-                 
+                  
                    
                </a-entity>
             </a-entity>
